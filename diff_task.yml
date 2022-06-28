@@ -17,4 +17,4 @@ run:
     ls diff_output
 
 outputs:
-- name: diff_output
+  - name: diff_output
