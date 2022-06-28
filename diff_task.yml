@@ -2,8 +2,8 @@
 platform: linux
 image_resource:
   source:
-    repository: registry.hub.docker.com/ubuntu
-  type: registry-image
+    repository: ubuntu
+  type: docker-image
 
 run:
   path: bash

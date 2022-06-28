@@ -1,13 +1,6 @@
-resource_types:
-- name: git-ubuntu
-  type: registry-image
-  source: 
-    repository: docker.io/concourse/git-resource
-    tag: ubuntu
-
 resources:
   - name: gitstuff
-    type: git-ubuntu
+    type: git
     source:
       uri: https://github.com/ojasaar/concourse-test.git
       branch: main
