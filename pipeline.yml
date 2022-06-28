@@ -1,0 +1,15 @@
+resources:
+  - name: gitstuff
+    type: git
+    source:
+      uri: git@github.com:ojasaar/concourse-test.git
+
+jobs:
+  - name: Produce diffs
+    plan:
+      - get: gitstuff
+      - in_parallel:
+        - task: cluster1
+          file: gitstuff/diff_task.yml
+          params:
+            CLUSTER_NAME: main04-fra-staging

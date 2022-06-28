@@ -1,0 +1,18 @@
+---
+platform: linux
+image_resource:
+  source:
+    repository: ubuntu
+  type: registry-image
+
+run:
+  path: bash
+  args:
+  - -ec
+  - |
+    set -o pipefail
+    mkdir -p diff_output
+    echo $CLUSTER_NAME > diff_output/diff_${CLUSTER_NAME}.md
+
+outputs:
+- name: diff_output
