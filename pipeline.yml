@@ -22,12 +22,14 @@ jobs:
           image_resource:
             source:
               repository: ubuntu
-              type: registry-image
+            type: docker-image
           inputs:
             - name: main04_fra_staging_diff
           run:
             path: /bin/bash
             args:
               - |
+                ls
+                ls main04_fra_staging_diff
                 cat main04_fra_staging_diff/diff.md
 

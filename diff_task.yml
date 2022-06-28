@@ -13,6 +13,8 @@ run:
     set -o pipefail
     mkdir -p diff_output
     echo $CLUSTER_NAME > diff_output/diff.md
+    ls
+    ls diff_output
 
 outputs:
 - name: diff_output
