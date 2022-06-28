@@ -12,10 +12,16 @@ jobs:
       - in_parallel:
         - task: cluster1
           file: gitstuff/diff_task.yml
-          #output_mapping: 
-            #diff_output: main04_fra_staging_diff
+          output_mapping: 
+            diff_output: main04_fra_staging_diff
           params:
             CLUSTER_NAME: main04-fra-staging
+        - task: cluster2
+          file: gitstuff/diff_task.yml
+          output_mapping: 
+            diff_output: main03_fra_staging_diff
+          params:
+            CLUSTER_NAME: main3-fra-staging
       - task: read
         config:
           platform: linux
@@ -24,13 +30,13 @@ jobs:
               repository: ubuntu
             type: docker-image
           inputs:
-            #- name: main04_fra_staging_diff
-            - name: diff_output
+            - name: main04_fra_staging_diff
+            - name: main03_fra_staging_diff
           run:
-            path: /bin/bash
+            path: bash
             args:
-              - |
-                ls
-                ls main04_fra_staging_diff
-                cat diff_output/diff.md
+            - -ec
+            - |
+              cat ./main04_fra_staging_diff/diff.md
+              cat ./main03_fra_staging_diff/diff.md
 
