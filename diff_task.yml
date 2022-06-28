@@ -2,7 +2,7 @@
 platform: linux
 image_resource:
   source:
-    repository: ubuntu
+    repository: registry.hub.docker.com/ubuntu
   type: registry-image
 
 run:

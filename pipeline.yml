@@ -1,11 +1,19 @@
+resource_types:
+- name: git-ubuntu
+  type: registry-image
+  source: 
+    repository: docker.io/concourse/git-resource
+    tag: ubuntu
+
 resources:
   - name: gitstuff
-    type: git
+    type: git-ubuntu
     source:
-      uri: git@github.com:ojasaar/concourse-test.git
+      uri: https://github.com/ojasaar/concourse-test.git
+      branch: main
 
 jobs:
-  - name: Produce diffs
+  - name: produce-diffs
     plan:
       - get: gitstuff
       - in_parallel:
